@@ -24,6 +24,7 @@ import {
   polygonMumbai,
   sepolia,
   zetachainAthensTestnet,
+  mainnet,
 } from "wagmi/chains"
 import { publicProvider } from "wagmi/providers/public"
 
@@ -33,6 +34,7 @@ interface RootLayoutProps {
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
+    mainnet,
     sepolia,
     polygonMumbai,
     bscTestnet,
