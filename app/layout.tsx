@@ -6,6 +6,7 @@ import {
   metaMaskWallet,
   okxWallet,
   xdefiWallet,
+  coinbaseWallet,
 } from "@rainbow-me/rainbowkit/wallets"
 
 import { fontSans } from "@/lib/fonts"
@@ -54,6 +55,7 @@ const connectors = connectorsForWallets([
       metaMaskWallet({ projectId: "PROJECT_ID", chains }),
       xdefiWallet({ chains }),
       okxWallet({ projectId: "PROJECT_ID", chains }),
+      coinbaseWallet({ projectId: "PROJECT_ID", chains }),
     ],
   },
 ])
