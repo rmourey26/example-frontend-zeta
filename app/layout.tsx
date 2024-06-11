@@ -6,6 +6,7 @@ import {
   metaMaskWallet,
   okxWallet,
   xdefiWallet,
+  coinbaseWallet,
 } from "@rainbow-me/rainbowkit/wallets"
 
 import { fontSans } from "@/lib/fonts"
