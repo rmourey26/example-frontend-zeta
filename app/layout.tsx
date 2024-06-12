@@ -7,6 +7,8 @@ import {
   okxWallet,
   xdefiWallet,
   coinbaseWallet,
+  walletConnectWallet,
+
 } from "@rainbow-me/rainbowkit/wallets"
 
 import { fontSans } from "@/lib/fonts"
@@ -22,6 +24,7 @@ import {
 import { WagmiConfig, configureChains, createConfig } from "wagmi"
 import {
   bscTestnet,
+  bsc,
   polygonMumbai,
   sepolia,
   zetachainAthensTestnet,
@@ -39,6 +42,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     sepolia,
     polygonMumbai,
     bscTestnet,
+    bsc,
     {
       ...zetachainAthensTestnet,
       iconUrl: "https://www.zetachain.com/favicon/favicon.png",
@@ -55,6 +59,7 @@ const connectors = connectorsForWallets([
       metaMaskWallet({ projectId: "PROJECT_ID", chains }),
       xdefiWallet({ chains }),
       okxWallet({ projectId: "PROJECT_ID", chains }),
+      walletConnectWallet({ projectId: "PROJECT_ID", chains })
     ],
   },
 ])

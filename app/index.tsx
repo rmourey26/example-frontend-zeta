@@ -375,7 +375,7 @@ export default function Index({ children }: RootLayoutProps) {
     if (!Cookies.get("firstTimeVisit")) {
       toast({
         title: "Welcome to DeFi ONE Test App",
-        description: "This is a testnet. Please do not use real funds.",
+        description: "This is a test app. Please do not use real funds.",
         duration: 60000,
       })
       Cookies.set("firstTimeVisit", "true", { expires: 7 })
