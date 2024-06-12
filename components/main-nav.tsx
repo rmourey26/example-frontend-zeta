@@ -1,9 +1,14 @@
 "use client"
+import * as React from "react"
+
 
 import { useContext } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Home, Settings } from "lucide-react"
+import { siteConfig } from "@/config/site"
+import { Icons } from "@/components/icons"
+
 
 import { NavItem } from "@/types/nav"
 import { cn } from "@/lib/utils"
@@ -25,6 +30,10 @@ import {
 } from "@/components/ui/sheet"
 import Transactions from "@/components/transactions"
 import { AppContext } from "@/app/index"
+
+interface MainNavProps {
+  items?: NavItem[]
+}
 
 export function MainNav() {
   const pathname = usePathname()
@@ -50,6 +59,19 @@ export function MainNav() {
               >
                 <Home className="mr-1 h-4 w-4" />
                 Home
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/staking" legacyBehavior passHref>
+              <NavigationMenuLink
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  pathname === "/" ? "bg-accent" : ""
+                )}
+              >
+               
+                Staking
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
