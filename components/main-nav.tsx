@@ -48,7 +48,7 @@ export function MainNav() {
   return (
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="flex items-center space-x-2">
-        <Icons.defione className="h-4 w-4" />
+        <Icons.defione className="h-5 w-5" />
         <span className="inline-block font-bold xs:text-base">{siteConfig.name}</span>
       </Link>
  <NavigationMenu>
@@ -58,7 +58,7 @@ export function MainNav() {
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <Settings
-                    className={cn("h-4 w-4", inProgress && "animate-spin")}
+                    className={cn("h-5 w-5", inProgress && "animate-spin")}
                   />
                 </Button>
               </SheetTrigger>
