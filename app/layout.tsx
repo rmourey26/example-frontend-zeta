@@ -86,8 +86,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <WagmiConfig config={wagmiConfig}>
             <RainbowKitProvider
             theme={midnightTheme({
-        ...midnightTheme.accentColors.pink,
-        borderRadius: 'small',
+        ...midnightTheme.accentColors.purple,
+        borderRadius: 'medium',
         fontStack: 'system',
       })}
             chains={chains}>
