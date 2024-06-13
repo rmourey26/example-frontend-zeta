@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "DeFi ONE Test App",
+  name: "DFI1",
   description: "The chain-agnostic DEX for the post quantum era.",
   mainNav: [
     {
