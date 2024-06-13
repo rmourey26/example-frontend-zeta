@@ -47,7 +47,11 @@ export function MainNav() {
 
   return (
     <div className="flex gap-6 md:gap-10">
-      <NavigationMenu>
+      <Link href="/" className="flex items-center space-x-2">
+        <Icons.defione className="h-4 w-4" />
+        <span className="inline-block font-bold xs:text-base">{siteConfig.name}</span>
+      </Link>
+ <NavigationMenu>
         <NavigationMenuList className="flex-row gap-1">
           <NavigationMenuItem>
             <Link href="/" legacyBehavior passHref>
