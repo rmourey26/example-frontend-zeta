@@ -11,6 +11,7 @@ import {
 
 } from "@rainbow-me/rainbowkit/wallets"
 
+
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import Index from "@/app/index"
@@ -19,7 +20,7 @@ import { ZetaChainProvider } from "./ZetaChainContext"
 import "@rainbow-me/rainbowkit/styles.css"
 import {
   RainbowKitProvider,
-  connectorsForWallets,
+  connectorsForWallets, lightTheme, darkTheme,midnightTheme,
 } from "@rainbow-me/rainbowkit"
 import { WagmiConfig, configureChains, createConfig } from "wagmi"
 import {
@@ -83,7 +84,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
           )}
         >
           <WagmiConfig config={wagmiConfig}>
-            <RainbowKitProvider chains={chains}>
+            <RainbowKitProvider
+            theme={midnightTheme({
+        ...midnightTheme.accentColors.pink,
+        borderRadius: 'small',
+        fontStack: 'system',
+      })}
+            chains={chains}>
               <ZetaChainProvider>
                 <Index>{children}</Index>
               </ZetaChainProvider>
