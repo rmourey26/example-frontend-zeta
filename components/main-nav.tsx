@@ -63,19 +63,6 @@ export function MainNav() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/staking" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={cn(
-                  navigationMenuTriggerStyle(),
-                  pathname === "/" ? "bg-accent" : ""
-                )}
-              >
-               
-                Staking
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
