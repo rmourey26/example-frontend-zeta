@@ -56,10 +56,10 @@ const connectors = connectorsForWallets([
     groupName: "Recommended",
     wallets: [
       injectedWallet({ chains }),
-      metaMaskWallet({ projectId: `${process.env.PROJECT_ID}`, chains }),
+      metaMaskWallet({ projectId: "2d3e1bb035d05e16f0241415b77e893a", chains }),
       xdefiWallet({ chains }),
-      okxWallet({ projectId: `${process.env.PROJECT_ID}`, chains }),
-      walletConnectWallet({ projectId: `${process.env.PROJECT_ID}`, chains })
+      okxWallet({ projectId: "2d3e1bb035d05e16f0241415b77e893a", chains }),
+      walletConnectWallet({ projectId: "2d3e1bb035d05e16f0241415b77e893a", chains })
     ],
   },
 ])
