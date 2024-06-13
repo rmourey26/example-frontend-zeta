@@ -61,6 +61,7 @@ export function SiteHeader() {
             </TooltipProvider>
             <ConnectButton
               chainStatus="icon"
+              label="Connect"
               accountStatus={{
                 smallScreen: "avatar",
                 largeScreen: "full",
