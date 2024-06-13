@@ -54,19 +54,6 @@ export function MainNav() {
  <NavigationMenu>
         <NavigationMenuList className="flex-row gap-1">
           <NavigationMenuItem>
-            <Link href="/" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={cn(
-                  navigationMenuTriggerStyle(),
-                  pathname === "/" ? "bg-accent" : ""
-                )}
-              >
-                <Home className="mr-1 h-4 w-4" />
-                Home
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
