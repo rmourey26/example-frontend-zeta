@@ -15,6 +15,7 @@ import { hexToBech32Address } from "@/lib/hexToBech32Address"
 import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/components/ui/use-toast"
 import { SiteHeader } from "@/components/site-header"
+import { SiteFooter } from "@/components/site-footer"
 import { ThemeProvider } from "@/components/theme-provider"
 
 import { useZetaChain } from "./ZetaChainContext"
@@ -421,6 +422,7 @@ export default function Index({ children }: RootLayoutProps) {
             <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
               <section className="container px-4 mt-4">{children}</section>
+            <SiteFooter/>
             </div>
             <Toaster />
           </NFTProvider>
