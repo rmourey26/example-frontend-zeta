@@ -11,7 +11,9 @@ import {
 
 } from "@rainbow-me/rainbowkit/wallets"
 
-import type { Metadata,Viewport } from 'next'
+import type { Metadata } from 'next'
+
+import { Viewport } from 'next'
 
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
