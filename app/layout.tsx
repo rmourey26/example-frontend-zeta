@@ -1,6 +1,7 @@
 "use client"
 
 import "@/styles/globals.css"
+import { siteConfig } from '@/config/site'
 import {
   injectedWallet,
   metaMaskWallet,
