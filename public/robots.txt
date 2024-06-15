@@ -1,0 +1,15 @@
+
+# Block all crawlers for /accounts
+User-agent: *
+Disallow: /account
+
+User-agent: *
+Disallow: /profile
+
+User-agent: *
+Disallow: /private
+
+User-agent: *
+Allow: /
+
+Sitemap: https://defione.io/sitemap.xml
