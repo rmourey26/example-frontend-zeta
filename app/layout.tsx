@@ -134,7 +134,7 @@ const metadata: Metadata = {
 }
 
 
-const viewport: Viewport =  {
+const viewport: typeof Viewport =  {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
