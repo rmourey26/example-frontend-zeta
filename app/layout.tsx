@@ -183,7 +183,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <WagmiConfig config={wagmiConfig}>
             <RainbowKitProvider
             theme={midnightTheme({
-        accentColor: '#64748b',
+        accentColor: '#6b7280',
         accentColorForeground: 'white',
         borderRadius: 'medium',
         fontStack: 'system',
