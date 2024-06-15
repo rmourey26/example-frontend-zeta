@@ -13,7 +13,7 @@ import {
 
 import type { Metadata } from 'next'
 
-import { Viewport } from 'next'
+import Viewport from 'next'
 
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
@@ -189,7 +189,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <WagmiConfig config={wagmiConfig}>
             <RainbowKitProvider
             theme={midnightTheme({
-        accentColor: '#c82858',
+        accentColor: '#030304',
         accentColorForeground: 'white',
         borderRadius: 'medium',
         fontStack: 'system',
