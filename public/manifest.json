@@ -1,5 +1,5 @@
 {
-  "background_color": "#fff",
+  "background_color": "#60607b",
   "display": "standalone",
   "homepage_url": "https://defione.io",
   "providedBy": {
@@ -32,6 +32,6 @@
   "description": "Swap tokens and NFTs on any chain, including BitCoin",
   "iconPath": "./images/512x512_App_Icon.png",
   "short_name": "DFI1",
-  "start_url": ".",
+  "start_url": "https://defione.io",
   "theme_color": "#0D0D0D"
 }
