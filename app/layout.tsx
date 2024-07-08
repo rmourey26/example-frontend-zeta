@@ -69,7 +69,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className={`min-h-screen bg-background font-sans antialiased ${fontSans.variable}`}
       >
         <WagmiConfig config={wagmiConfig}>
-          <RainbowKitProvider chains={chains}>
+          <RainbowKitProvider 
+        theme={midnightTheme({
+        accentColor: '#6b7280',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+        fontStack: 'system',
+      })}
+      chains={chains}>
             <ZetaChainProvider>
               <Index>{children}</Index>
             </ZetaChainProvider>
