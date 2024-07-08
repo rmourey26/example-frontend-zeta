@@ -2,6 +2,7 @@
 
 import "@/styles/globals.css"
 import type { Metadata } from 'next'
+import { siteConfig } from '@/config/site'
 import { Inter as FontSans } from "next/font/google"
 import {
   injectedWallet,
