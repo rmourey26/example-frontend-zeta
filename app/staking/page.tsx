@@ -67,7 +67,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { useToast } from "@/components/ui/use-toast"
-import { AppContext } from "@/app/index"
+import { AppContext } from "@/app/indexlegacy"
 
 const StakingPage = () => {
   const {

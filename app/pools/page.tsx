@@ -6,7 +6,7 @@ import { useAccount } from "wagmi"
 
 import { Card } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import { AppContext } from "@/app/index"
+import { AppContext } from "@/app/indexlegacy"
 
 const PoolsPage = () => {
   const { pools, balances, balancesLoading, poolsLoading, fetchPools } =

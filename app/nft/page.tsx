@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { AppContext } from "@/app/index"
+import { AppContext } from "@/app/indexlegacy"
 
 import { useBurn } from "./burn"
 import { useFetchNFTs } from "./fetchNFTs"

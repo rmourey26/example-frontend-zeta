@@ -36,7 +36,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { AppContext } from "@/app/index"
+import { AppContext } from "@/app/indexlegacy"
 
 const contracts: any = {
   goerli_testnet: "0x122F9Cca5121F23b74333D5FBd0c5D9B413bc002",

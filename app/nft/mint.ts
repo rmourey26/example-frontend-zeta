@@ -6,7 +6,7 @@ import { parseEther } from "viem"
 import { useAccount } from "wagmi"
 
 import { useEthersSigner } from "@/lib/ethers"
-import { AppContext } from "@/app/index"
+import { AppContext } from "@/app/indexlegacy"
 
 import { useNFT } from "./useNFT"
 

@@ -29,7 +29,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import Transactions from "@/components/transactions"
-import { AppContext } from "@/app/index"
+import { AppContext } from "@/app/indexlegacy"
 
 interface MainNavProps {
   items?: NavItem[]

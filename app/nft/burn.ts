@@ -4,7 +4,7 @@ import { ethers } from "ethers"
 import { useAccount } from "wagmi"
 
 import { useEthersSigner } from "@/lib/ethers"
-import { AppContext } from "@/app/index"
+import { AppContext } from "@/app/indexlegacy"
 
 import { useFetchNFTs } from "./fetchNFTs"
 import { useNFT } from "./useNFT"

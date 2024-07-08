@@ -20,7 +20,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { MainNav } from "@/components/main-nav"
-import { AppContext } from "@/app/index"
+import { AppContext } from "@/app/indexlegacy"
 
 export function SiteHeader() {
   const { bitcoinAddress, connectBitcoin } = useContext(AppContext)
