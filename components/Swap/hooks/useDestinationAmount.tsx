@@ -1,107 +1,152 @@
 import { useEffect, useState } from "react"
-import { bech32 } from "bech32"
-import { ethers, utils } from "ethers"
+import { useBalanceContext } from "@/context/BalanceContext"
+import { utils } from "ethers"
+import debounce from "lodash/debounce"
 
-import type { Token } from "./types"
+import { roundNumber } from "@/lib/utils"
+import { useZetaChainClient } from "@/hooks/useZetaChainClient"
 
-const useDestinationAddress = (
-  address: `0x${string}` | undefined,
+import type { Balance, CrossChainFee, Token } from "./types"
+
+const useDestinationAmount = (
+  sourceTokenSelected: Token | null,
   destinationTokenSelected: Token | null,
-  bitcoinAddress: string | null
+  sourceAmount: string,
+  crossChainFee: CrossChainFee | null,
+  sendType: string | null
 ) => {
-  const [addressSelected, setAddressSelected] = useState<string>("")
-  const [isAddressSelectedValid, setIsAddressSelectedValid] = useState(false)
-  const [customAddress, setCustomAddress] = useState<string>("")
-  const [customAddressSelected, setCustomAddressSelected] = useState<
-    string | null
-  >(null)
-  const [customAddressOpen, setCustomAddressOpen] = useState(false)
-  const [isCustomAddressValid, setIsCustomAddressValid] = useState(false)
+  const { client } = useZetaChainClient()
+  const [destinationAmount, setDestinationAmount] = useState<string>("")
+  const [destinationAmountIsLoading, setDestinationAmountIsLoading] =
+    useState<boolean>(false)
+  const { balances } = useBalanceContext()
 
   useEffect(() => {
-    if (!isAddressSelectedValid && destinationTokenSelected) {
-      if (destinationTokenSelected.chain_name === "btc_testnet") {
-        setAddressSelected(bitcoinAddress || "")
-      } else {
-        setAddressSelected(address || "")
+    setDestinationAmount("")
+    const fetchQuoteCrossChain = async (
+      s: Token,
+      d: Token,
+      sourceAmount: string,
+      withdraw: boolean
+    ) => {
+      setDestinationAmount("")
+      setDestinationAmountIsLoading(true)
+      try {
+        const quote = await getQuoteCrossChain(s, d, sourceAmount, withdraw)
+        if (quote) {
+          setDestinationAmount(roundNumber(parseFloat(quote)).toString())
+          setDestinationAmountIsLoading(false)
+        }
+      } catch (e) {
+        console.error(e)
+        setDestinationAmountIsLoading(false)
       }
+    }
+    const debouncedFetchQuoteCrossChain = debounce(fetchQuoteCrossChain, 500)
+    if (!sendType) {
+      setDestinationAmountIsLoading(false)
+      return
+    }
+    if (
+      [
+        "crossChainSwap",
+        "crossChainSwapBTC",
+        "fromZetaChainSwapAndWithdraw",
+      ].includes(sendType)
+    ) {
+      debouncedFetchQuoteCrossChain(
+        sourceTokenSelected!,
+        destinationTokenSelected!,
+        sourceAmount,
+        true
+      )
+    } else if (
+      ["crossChainSwapBTCTransfer", "crossChainSwapTransfer"].includes(sendType)
+    ) {
+      debouncedFetchQuoteCrossChain(
+        sourceTokenSelected!,
+        destinationTokenSelected!,
+        sourceAmount,
+        false
+      )
+    } else if (["crossChainZeta"].includes(sendType)) {
+      const delta =
+        parseFloat(sourceAmount) - parseFloat(crossChainFee?.amount || "0")
+      if (sourceAmount && delta > 0) {
+        setDestinationAmount(delta.toFixed(2).toString())
+      }
+    } else if (["fromZetaChainSwap"].includes(sendType)) {
+      debouncedFetchQuoteCrossChain(
+        sourceTokenSelected!,
+        destinationTokenSelected!,
+        sourceAmount,
+        false
+      )
+    } else {
+      setDestinationAmount(sourceAmount)
+    }
+    return () => {
+      debouncedFetchQuoteCrossChain.cancel()
     }
   }, [
+    sourceTokenSelected,
     destinationTokenSelected,
-    isAddressSelectedValid,
-    bitcoinAddress,
-    address,
+    sourceAmount,
+    crossChainFee,
+    sendType,
   ])
 
-  useEffect(() => {
-    setAddressSelected(customAddressSelected || address || "")
-  }, [customAddressSelected, address])
-
-  useEffect(() => {
-    let isValidBech32 = false
-    try {
-      if (customAddress && bech32.decode(customAddress)) {
-        const bech32address = utils.solidityPack(
-          ["bytes"],
-          [utils.toUtf8Bytes(customAddress)]
-        )
-        if (bech32address) {
-          isValidBech32 = true
-        }
-      }
-    } catch (e) {}
-    const isValidEVMAddress = ethers.utils.isAddress(customAddress)
-    if (!destinationTokenSelected) {
-      setIsCustomAddressValid(true)
-    } else if (destinationTokenSelected.chain_name === "btc_testnet") {
-      setIsCustomAddressValid(isValidBech32)
+  const getQuoteCrossChain = async (
+    s: Token,
+    d: Token,
+    sourceAmount: string,
+    withdraw: boolean
+  ) => {
+    const dIsZRC20 = d?.zrc20 || (d?.coin_type === "ZRC20" && d?.contract)
+    const isAmountValid = sourceAmount && parseFloat(sourceAmount) > 0
+    const WZETA = balances.find((b: Balance) => b.id === "7001__wzeta")
+    const dIsZETA = d.coin_type === "Gas" && Number(d.chain_id) === 7001 // Convert chain_id to number
+    const sIsZETA = s.coin_type === "Gas" && s.chain_id === 7001
+    let sourceAddress
+    if (s.coin_type === "ZRC20") {
+      sourceAddress = s.contract
+    } else if (sIsZETA) {
+      sourceAddress = WZETA?.contract
     } else {
-      setIsCustomAddressValid(isValidEVMAddress)
+      sourceAddress = s.zrc20
     }
-  }, [customAddress, destinationTokenSelected])
+    if (!isAmountValid) return "0"
+    if (isAmountValid && (dIsZRC20 || dIsZETA) && sourceAddress) {
+      let amount
+      if (withdraw && crossChainFee) {
+        const AmountMinusFee = utils
+          .parseUnits(sourceAmount, sourceTokenSelected!.decimals)
+          .sub(utils.parseUnits(crossChainFee.amount, crossChainFee.decimals))
 
-  const saveCustomAddress = () => {
-    if (isCustomAddressValid) {
-      setCustomAddressSelected(customAddress)
-      setCustomAddress(customAddress)
-      setCustomAddressOpen(false)
+        amount = utils.formatUnits(
+          AmountMinusFee,
+          sourceTokenSelected!.decimals
+        )
+      } else {
+        amount = sourceAmount
+      }
+      const target = d.coin_type === "ZRC20" ? d.contract : d.zrc20
+      const dAddress = dIsZETA ? WZETA?.contract : target
+      let q
+      try {
+        q = await client.getQuote(amount, sourceAddress, dAddress!)
+      } catch (error) {
+        console.error("Error fetching quote:", error)
+        return "0"
+      }
+      return utils.formatUnits(q.amount, q.decimals)
     }
   }
 
-  useEffect(() => {
-    let isValidBech32 = false
-    try {
-      if (addressSelected && bech32.decode(addressSelected)) {
-        const bech32address = utils.solidityPack(
-          ["bytes"],
-          [utils.toUtf8Bytes(addressSelected)]
-        )
-        if (bech32address) {
-          isValidBech32 = true
-        }
-      }
-    } catch (e) {}
-    const isValidEVMAddress = ethers.utils.isAddress(addressSelected || "")
-    if (!destinationTokenSelected) {
-      setIsAddressSelectedValid(true)
-    } else if (destinationTokenSelected.chain_name === "btc_testnet") {
-      setIsAddressSelectedValid(isValidBech32)
-    } else {
-      setIsAddressSelectedValid(isValidEVMAddress)
-    }
-  }, [addressSelected, destinationTokenSelected])
-
   return {
-    addressSelected,
-    isAddressSelectedValid,
-    customAddressOpen,
-    setCustomAddressOpen,
-    canChangeAddress: true,
-    customAddress,
-    setCustomAddress,
-    isCustomAddressValid,
-    saveCustomAddress,
+    destinationAmount,
+    destinationAmountIsLoading,
   }
 }
 
-export default useDestinationAddress
+export default useDestinationAmount
