@@ -6,7 +6,7 @@ import {
   Loader2,
   RefreshCcw,
   Send,
-  UserCircle2,
+  UserCircle,
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -299,7 +299,7 @@ const SwapLayout: React.FC<SwapLayoutProps> = ({
                   className="rounded-full text-xs h-6 px-2"
                 >
                   {isAddressSelectedValid ? (
-                    <UserCircle2 className="h-3 w-3 mr-1" />
+                    <UserCircle className="h-3 w-3 mr-1" />
                   ) : (
                     <AlertCircle className="h-3 w-3 mr-1" />
                   )}
