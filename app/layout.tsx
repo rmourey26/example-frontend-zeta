@@ -3,6 +3,7 @@
 import "@/styles/globals.css"
 import type { Metadata } from 'next'
 import { siteConfig } from '@/config/site'
+import { headers } from "next/headers";
 import { Inter as FontSans } from "next/font/google"
 import {
   injectedWallet,
@@ -152,6 +153,7 @@ const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 })
+const cookie = headers().get("cookie");
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
@@ -168,7 +170,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         borderRadius: 'medium',
         fontStack: 'system',
       })}
-      chains={chains}>
+      chains={chains}
+cookie={cookie}>
             <ZetaChainProvider>
               <Index>{children}</Index>
             </ZetaChainProvider>
