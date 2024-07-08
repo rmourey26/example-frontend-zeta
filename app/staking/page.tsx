@@ -1,7 +1,10 @@
 "use client"
 
-import { useCallback, useContext, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import Link from "next/link"
+import { useBalanceContext } from "@/context/BalanceContext"
+import { useStakingContext } from "@/context/StakingContext"
+import { useValidatorsContext } from "@/context/ValidatorsContext"
 import { generatePostBodyBroadcast } from "@evmos/provider"
 import {
   createTxMsgBeginRedelegate,
@@ -67,24 +70,24 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { useToast } from "@/components/ui/use-toast"
-import { AppContext } from "@/app/indexlegacy"
 
 const StakingPage = () => {
   const {
-    validators,
-    fetchValidators,
     fetchStakingDelegations,
     stakingDelegations,
-    balances,
     fetchStakingRewards,
     stakingRewards,
-    validatorsLoading,
     fetchUnbondingDelegations,
     unbondingDelegations,
-    fetchBalances,
+  } = useStakingContext()
+  const {
+    validators,
+    fetchValidators,
+    validatorsLoading,
     observers,
     fetchObservers,
-  } = useContext(AppContext)
+  } = useValidatorsContext()
+  const { balances, fetchBalances } = useBalanceContext()
   const [selectedValidator, setSelectedValidator] = useState<any>(null)
   const [isSending, setIsSending] = useState(false)
   const [isZetaChain, setIsZetaChain] = useState(false)
@@ -673,8 +676,11 @@ const StakingPage = () => {
   }
 
   const isObserver = (address: string) => {
-    return observers.find(
-      (o: any) => convertToBech32(o.operator, "zetavaloper") === address
+    return (
+      observers &&
+      observers.find(
+        (o: any) => convertToBech32(o.operator, "zetavaloper") === address
+      )
     )
   }
 
