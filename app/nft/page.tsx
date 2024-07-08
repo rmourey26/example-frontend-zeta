@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { useCCTXsContext } from "@/context/CCTXsContext"
 import { AnimatePresence, motion } from "framer-motion"
 import { debounce } from "lodash"
-import { Flame, Loader, RefreshCw, Send, Sparkles } from "lucide-react"
+import { Flame, Loader, RefreshCw, Send, Wand } from "lucide-react"
 import { Tilt } from "react-next-tilt"
 import { useAccount, useNetwork, useSwitchNetwork } from "wagmi"
 
@@ -134,7 +134,7 @@ const NFTPage = () => {
                 {mintingInProgress ? (
                   <Loader className="h-4 w-4 mr-1 animate-spin-slow" />
                 ) : (
-                  <Sparkles className="h-4 w-4 mr-1" />
+                  <Wand className="h-4 w-4 mr-1" />
                 )}
                 Mint
               </Button>
