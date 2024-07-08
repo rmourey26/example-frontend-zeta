@@ -153,7 +153,7 @@ const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 })
-const cookie = headers().get("cookie");
+
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
@@ -170,8 +170,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         borderRadius: 'medium',
         fontStack: 'system',
       })}
-      chains={chains}
-cookie={cookie}>
+      chains={chains}>
             <ZetaChainProvider>
               <Index>{children}</Index>
             </ZetaChainProvider>
