@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation"
 import { Home, Settings } from "lucide-react"
 import { siteConfig } from "@/config/site"
 import { Icons } from "@/components/icons"
+import { useCCTXsContext } from "@/context/CCTXsContext"
 
 
 import { NavItem } from "@/types/nav"
@@ -28,8 +29,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import Transactions from "@/components/transactions"
-import { AppContext } from "@/app/indexlegacy"
+import Transactions from "@/components/Transactions"
+
 
 interface MainNavProps {
   items?: NavItem[]
@@ -37,7 +38,7 @@ interface MainNavProps {
 
 export function MainNav() {
   const pathname = usePathname()
-  const { cctxs } = useContext(AppContext)
+  const { cctxs } = useCCTXsContext()
 
   const inProgress =
     cctxs.filter(

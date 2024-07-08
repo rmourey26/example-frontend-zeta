@@ -19,14 +19,8 @@ export const docsConfig: DocsConfig = {
       title: "Staking",
       href: "/staking",
     },
-    { 
-      title: "Pools",
-      href: "/pools",
-    },
-    { 
-      title: "X-Chain Messaging",
-      href: "/messaging",
-    },
+    
+    
   ],
   sidebarNav: [
     {

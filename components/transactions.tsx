@@ -6,7 +6,7 @@ import { AlertTriangle, CheckCircle2, Loader2 } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Card } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
-import { AppContext } from "@/app/indexlegacy"
+import { AppContext } from "@/app/index"
 
 const TransactionsPage = () => {
   const { cctxs } = useContext(AppContext)

@@ -1,10 +1,9 @@
-import { useContext } from "react"
+import { useFeesContext } from "@/context/FeesContext"
 import { abi } from "@zetachain/example-contracts/abi/omnichain/NFT.sol/NFT.json"
 import { ethers } from "ethers"
 import { useAccount } from "wagmi"
 
-import { useEthersSigner } from "@/lib/ethers"
-import { AppContext } from "@/app/indexlegacy"
+import { useEthersSigner } from "@/hooks/useEthersSigner"
 
 import { useFetchNFTs } from "./fetchNFTs"
 import { useNFT } from "./useNFT"
@@ -16,7 +15,7 @@ export const useBurn = () => {
     setAssetsBurned,
     omnichainContract,
   } = useNFT()
-  const { setInbounds, inbounds } = useContext(AppContext)
+  const { setInbounds, inbounds } = useFeesContext()
   const { address } = useAccount()
   const signer = useEthersSigner()
   const { fetchNFTs } = useFetchNFTs()

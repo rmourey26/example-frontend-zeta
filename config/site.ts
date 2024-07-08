@@ -17,14 +17,7 @@ export const siteConfig = {
       title: "Staking",
       href: "/staking",
     },
-    { 
-      title: "Pools",
-      href: "/pools",
-    }, 
-    { 
-      title: "X-Chain Messaging",
-      href: "/messaging",
-    },
+    
   ],
   links: {
     twitter: "https://twitter.com/dfione",

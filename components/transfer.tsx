@@ -39,8 +39,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { useZetaChain } from "@/app/ZetaChainContext"
-import { AppContext } from "@/app/indexlegacy"
+import { useZetaChain } from "@/hooks/useZetaChainClient"
+import { AppContext } from "@/app/index"
 
 const Transfer = () => {
   const { client } = useZetaChain()

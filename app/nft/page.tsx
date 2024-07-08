@@ -1,9 +1,10 @@
 "use client"
 
-import { useContext, useEffect } from "react"
+import { useEffect } from "react"
+import { useCCTXsContext } from "@/context/CCTXsContext"
 import { AnimatePresence, motion } from "framer-motion"
 import { debounce } from "lodash"
-import { Flame, Loader, RefreshCw, Send, Wand } from "lucide-react"
+import { Flame, Loader, RefreshCw, Send, Sparkles } from "lucide-react"
 import { Tilt } from "react-next-tilt"
 import { useAccount, useNetwork, useSwitchNetwork } from "wagmi"
 
@@ -21,7 +22,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { AppContext } from "@/app/indexlegacy"
 
 import { useBurn } from "./burn"
 import { useFetchNFTs } from "./fetchNFTs"
@@ -44,7 +44,7 @@ const NFTPage = () => {
     setRecipient,
     foreignCoins,
   } = useNFT()
-  const { cctxs } = useContext(AppContext)
+  const { cctxs } = useCCTXsContext()
   const { switchNetwork } = useSwitchNetwork()
   const { chain } = useNetwork()
   const { transfer } = useTransfer()
@@ -134,7 +134,7 @@ const NFTPage = () => {
                 {mintingInProgress ? (
                   <Loader className="h-4 w-4 mr-1 animate-spin-slow" />
                 ) : (
-                  <Wand className="h-4 w-4 mr-1" />
+                  <Sparkles className="h-4 w-4 mr-1" />
                 )}
                 Mint
               </Button>
@@ -292,5 +292,3 @@ const NFTPage = () => {
 }
 
 export default NFTPage
-import { Wand2 } from "lucide-react"
-
