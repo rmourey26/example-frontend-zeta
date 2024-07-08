@@ -17,7 +17,7 @@ import Index from "@/app/index"
 import "@rainbow-me/rainbowkit/styles.css"
 import {
   RainbowKitProvider,
-  connectorsForWallets,
+  connectorsForWallets, midnightTheme,
 } from "@rainbow-me/rainbowkit"
 import { WagmiConfig, configureChains, createConfig } from "wagmi"
 import { bscTestnet, sepolia, zetachainAthensTestnet, mainnet } from "wagmi/chains"
