@@ -84,7 +84,7 @@ const metadata: Metadata = {
     url: "https://defione.io",
     images: [
       {
-        url: 'https://defione.io/opengraph-image.jpg', // Must be an absolute URL
+        url: 'https://defione.io/og-image.jpg', // Must be an absolute URL
         width: 1230,
         height: 640,
       },
@@ -122,6 +122,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     sepolia,
     bscTestnet,
+    mainnet,
     {
       ...zetachainAthensTestnet,
       iconUrl: "https://www.zetachain.com/favicon/favicon.png",
