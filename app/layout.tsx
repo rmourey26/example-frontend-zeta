@@ -26,11 +26,9 @@ import { publicProvider } from "wagmi/providers/public"
 
 interface RootLayoutProps {
   children: React.ReactNode
+  metadata: Metadata
 }
 
-interface metadata extends RootLayoutProps {
-  metadata?: Metadata;
-}
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     sepolia,
