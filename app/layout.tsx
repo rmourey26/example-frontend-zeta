@@ -27,6 +27,47 @@ import { publicProvider } from "wagmi/providers/public"
 interface RootLayoutProps {
   children: React.ReactNode
 }
+
+
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [
+    sepolia,
+    bscTestnet,
+    mainnet,
+    {
+      ...zetachainAthensTestnet,
+      iconUrl: "https://www.zetachain.com/favicon/favicon.png",
+    },
+  ],
+  [publicProvider()]
+)
+
+const connectors = connectorsForWallets([
+  {
+    groupName: "Recommended",
+    wallets: [
+      injectedWallet({ chains }),
+      metaMaskWallet({ projectId: "PROJECT_ID", chains }),
+      xdefiWallet({ chains }),
+      okxWallet({ projectId: "PROJECT_ID", chains }),
+    ],
+  },
+])
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient,
+  webSocketPublicClient,
+})
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
+
+
+export default function RootLayout({ children, metadata:Metadata }: RootLayoutProps) {
 const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -117,46 +158,6 @@ const metadata: Metadata = {
      ],
    },
 }
-
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [
-    sepolia,
-    bscTestnet,
-    mainnet,
-    {
-      ...zetachainAthensTestnet,
-      iconUrl: "https://www.zetachain.com/favicon/favicon.png",
-    },
-  ],
-  [publicProvider()]
-)
-
-const connectors = connectorsForWallets([
-  {
-    groupName: "Recommended",
-    wallets: [
-      injectedWallet({ chains }),
-      metaMaskWallet({ projectId: "PROJECT_ID", chains }),
-      xdefiWallet({ chains }),
-      okxWallet({ projectId: "PROJECT_ID", chains }),
-    ],
-  },
-])
-
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-  webSocketPublicClient,
-})
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
-
-
-export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
