@@ -28,7 +28,9 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
-
+interface metadata extends RootLayoutProps {
+  metadata?: Metadata;
+}
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     sepolia,
