@@ -140,7 +140,7 @@ export default function Index({ children, metadata:Metadata}: RootLayoutProps) {
                   <div className="relative flex min-h-screen flex-col">
                     <SiteHeader />
                     <section className="container px-4 mt-4">
-                      {children}
+                      {children, metadata}
                     </section>
                   </div>
                   <Toaster />
