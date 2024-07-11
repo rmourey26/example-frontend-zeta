@@ -24,15 +24,10 @@ import {
 import { WagmiConfig, configureChains, createConfig } from "wagmi"
 import { bscTestnet, sepolia, zetachainAthensTestnet, mainnet } from "wagmi/chains"
 import { publicProvider } from "wagmi/providers/public"
-import { PageMeta } from '@/types/nav'
 
 interface RootLayoutProps {
   children: React.ReactNode
   metadata: Metadata
-}
-
-interface Props extends RootLayoutProps {
-  meta: Metadata;
 }
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
@@ -72,8 +67,7 @@ const fontSans = FontSans({
   variable: "--font-sans",
 })
 
-
-const meta: Metadata= {
+const metadata: Metadata = {
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -162,17 +156,13 @@ const meta: Metadata= {
       },
      ],
    },
-  
 }
 
-export default function RootLayout({ children, metadata: Metadata, meta: Metadata}: RootLayoutProps) {
+export default function RootLayout({ children, metadata: Metadata}: RootLayoutProps) {
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <head> <title>{meta.title}</title>
-        <link href="/favicon.ico" rel="shortcut icon" />
-        <meta content={meta.description} name="description" />
-</head/>
+      <head/>
       <body
         className={`min-h-screen bg-background font-sans antialiased ${fontSans.variable}`}
       >
