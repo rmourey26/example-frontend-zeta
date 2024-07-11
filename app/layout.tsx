@@ -24,6 +24,7 @@ import {
 import { WagmiConfig, configureChains, createConfig } from "wagmi"
 import { bscTestnet, sepolia, zetachainAthensTestnet, mainnet } from "wagmi/chains"
 import { publicProvider } from "wagmi/providers/public"
+import { alchemyProvider } from "wagmi/providers/alchemy"
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -40,7 +41,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
       iconUrl: "https://www.zetachain.com/favicon/favicon.png",
     },
   ],
-  [publicProvider()]
+  [alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }), publicProvider()]
 )
 
 const connectors = connectorsForWallets([
