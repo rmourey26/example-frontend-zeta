@@ -175,7 +175,7 @@ export default function RootLayout({ children, metadata: Metadata}: RootLayoutPr
       })}
       chains={chains}>
             <ZetaChainProvider>
-              <Index>{children}</Index>
+              <Index metadata={metadata}>{children}</Index>
             </ZetaChainProvider>
           </RainbowKitProvider>
         </WagmiConfig>
