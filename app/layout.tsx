@@ -2,6 +2,7 @@
 
 import "@/styles/globals.css"
 import type { Metadata } from 'next'
+import { PropsWithChildren } from 'react';
 import { siteConfig } from '@/config/site'
 import { headers } from "next/headers";
 import { Inter as FontSans } from "next/font/google"
