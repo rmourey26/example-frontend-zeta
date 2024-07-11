@@ -41,7 +41,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
       iconUrl: "https://www.zetachain.com/favicon/favicon.png",
     },
   ],
-  [alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }), publicProvider()]
+  [alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY }), publicProvider()]
 )
 
 const connectors = connectorsForWallets([
