@@ -17,7 +17,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/components/ui/use-toast"
 import { SiteHeader } from "@/components/site-header"
 
-import { NFTProvider } from "./nft/useNFT"
+import { NFTProvider } from "@/app/nft/useNFT"
 
 interface RootLayoutProps {
   children: React.ReactNode
