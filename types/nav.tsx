@@ -17,3 +17,14 @@ export interface NavItemWithChildren extends NavItem {
 export interface MainNavItem extends NavItem {}
 
 export interface SidebarNavItem extends NavItemWithChildren {}
+
+export interface PageMeta {
+  title: string;
+  description: string;
+  cardImage: string;
+  googleAdsenseAccount: string;
+  keywords: string;
+  referrer: string;
+  creator: string;
+  publisher: string; 
+}
