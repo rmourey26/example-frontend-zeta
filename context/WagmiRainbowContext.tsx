@@ -22,7 +22,7 @@ import {
 import { WagmiConfig, configureChains, createConfig } from "wagmi"
 import { bscTestnet, sepolia, zetachainAthensTestnet, mainnet } from "wagmi/chains"
 import { publicProvider } from "wagmi/providers/public"
-import { alchemyProvider } from "wagmi/providers/public"
+import { alchemyProvider } from "wagmi/providers/alchemy"
 
 type Props = {
   children: ReactNode
