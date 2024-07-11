@@ -1,6 +1,7 @@
 
 "use client"
 import "@/styles/globals.css"
+import React, { ReactNode } from 'react'
 import { siteConfig } from '@/config/site'
 import { headers } from "next/headers";
 import { Inter as FontSans } from "next/font/google"
