@@ -1,6 +1,3 @@
-"use client"
-
-
 import type { Metadata } from 'next'
 import { siteConfig } from '@/config/site'
 import React, { createContext, useContext, useEffect, useState } from "react"
@@ -138,6 +135,7 @@ export default function Index({ children, metadata:Metadata}: RootLayoutProps) {
               <CCTXsProvider>
                 <NFTProvider>
                   <div className="relative flex min-h-screen flex-col">
+                  
                     <SiteHeader />
                     <section className="container px-4 mt-4">
                       {children}
