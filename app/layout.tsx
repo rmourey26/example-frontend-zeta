@@ -26,10 +26,6 @@ import { bscTestnet, sepolia, zetachainAthensTestnet, mainnet } from "wagmi/chai
 import { publicProvider } from "wagmi/providers/public"
 import { alchemyProvider } from "wagmi/providers/alchemy"
 
-interface RootLayoutProps {
-  children: React.ReactNode
-  
-}
 
 
 const fontSans = FontSans({
@@ -128,12 +124,14 @@ export const metadata: Metadata = {
    },
 }
 
-
+interface RootLayoutProps {
+  children: React.ReactNode
+}
 export default function RootLayout({ children}: RootLayoutProps) {
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <head/>
+      
       <body
         className={`min-h-screen bg-background font-sans antialiased ${fontSans.variable}`}
       >
