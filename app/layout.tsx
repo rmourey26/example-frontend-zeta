@@ -124,12 +124,12 @@ export const metadata: Metadata = {
    },
 }
 
-interface RootLayoutProps {
-  children: Readonly<{
+
+export default function RootLayout({
+  children
+}: Readonly<{
   children: React.ReactNode
-}>) 
-}
-export default function RootLayout({ children}: RootLayoutProps) {
+}>) { 
 
   return (
     <html lang="en" suppressHydrationWarning>
