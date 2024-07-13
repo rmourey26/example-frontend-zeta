@@ -13,7 +13,7 @@ import Cookies from "js-cookie"
 import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/components/ui/use-toast"
 import { SiteHeader } from "@/components/site-header"
-import { WagmiRainbowProvider } from '@/context/WagmiRainbowContext' 
+import WagmiRainbowProvider from '@/context/WagmiRainbowContext' 
 
 import { NFTProvider } from "./nft/useNFT"
 
