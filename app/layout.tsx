@@ -132,15 +132,22 @@ export default function RootLayout({
 }>) { 
 
   return (
+    
     <html lang="en" suppressHydrationWarning>
       <body
         className={`min-h-screen bg-background font-sans antialiased ${fontSans.variable}`}>
+<div className="relative flex min-h-screen flex-col">
+             
+<div className="relative flex min-h-screen flex-col">
+<SiteHeader/>
+             <div className="flex-1">
         <WagmiRainbowProvider>
       
            
-              <Index>{children}</Index>
+              <Index>{children}</Index></div>
            
           </WagmiRainbowProvider/>
+        </div>
       </body>
     </html>
   )
