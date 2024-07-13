@@ -12,7 +12,6 @@ import {
 } from "@rainbow-me/rainbowkit/wallets"
 
 import { ZetaChainProvider } from "@/hooks/useZetaChainClient"
-import Index from "@/app/index"
 
 import "@rainbow-me/rainbowkit/styles.css"
 import {
