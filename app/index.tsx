@@ -18,11 +18,10 @@ import { NFTProvider } from "./nft/useNFT"
 
 interface RootLayoutProps {
   children: React.ReactNode
-  metadata: Metadata
+ 
 }
 
-export default function Index({ children, metadata:Metadata}: RootLayoutProps) {
- const metadata: Metadata = {
+export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -113,6 +112,9 @@ export default function Index({ children, metadata:Metadata}: RootLayoutProps) {
    },
 }
 
+
+export default function Index({ children}: RootLayoutProps) {
+ 
  const { toast } = useToast()
 
   useEffect(() => {
