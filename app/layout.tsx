@@ -139,9 +139,9 @@ export default function RootLayout({ children}: RootLayoutProps) {
       >
         <WagmiRainbowProvider
       
-            <ZetaChainProvider>
+           
               <Index>{children}</Index>
-            </ZetaChainProvider>
+           
           </WagmiRainbowProvider/>
       </body>
     </html>
