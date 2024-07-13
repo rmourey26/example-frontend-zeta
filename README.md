@@ -1,4 +1,4 @@
-# ZetaChain Frontend App Template
+# ZetaChain Frontend App Template .
 
 This repository provides a frontend app template for developers looking to build
 applications on ZetaChain. It's designed to demonstrate various ZetaChain
