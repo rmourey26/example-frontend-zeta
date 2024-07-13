@@ -135,7 +135,7 @@ export default function RootLayout({ children}: RootLayoutProps) {
       <body
         className={`min-h-screen bg-background font-sans antialiased ${fontSans.variable}`}
       >
-        <WagmiRainbowProvider
+        <WagmiRainbowProvider>
       
            
               <Index>{children}</Index>
