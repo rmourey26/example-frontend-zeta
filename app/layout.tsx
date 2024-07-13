@@ -14,6 +14,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/components/ui/use-toast"
 import { SiteHeader } from "@/components/site-header"
 import WagmiRainbowProvider from '@/context/WagmiRainbowContext' 
+import { ReactQueryClientProvider } from '@/components/react-query-client-provider'
 
 import { NFTProvider } from "./nft/useNFT"
 
@@ -133,7 +134,7 @@ const { toast } = useToast()
 
 
   return (
-
+<ReactQueryClientProvider>
     <html lang="en" suppressHydrationWarning>
       <body
         className={`min-h-screen bg-background font-sans antialiased ${fontSans.variable}`}>
@@ -166,5 +167,6 @@ const { toast } = useToast()
    </WagmiRainbowProvider/>
       </body>
     </html>
+</ReactQueryClientProvider >
   )
 }
