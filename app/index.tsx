@@ -13,6 +13,7 @@ import Cookies from "js-cookie"
 import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/components/ui/use-toast"
 import { SiteHeader } from "@/components/site-header"
+import { WagmiRainbowProvider } from '@/context/WagmiRainbowContext' 
 
 import { NFTProvider } from "./nft/useNFT"
 
@@ -111,11 +112,13 @@ export const metadata: Metadata = {
      ],
    },
 }
+export default function RootLayout({
+  children
+}: Readonly<{
+  children: React.ReactNode
+}>) { 
 
-
-export default function Index({ children}: RootLayoutProps) {
- 
- const { toast } = useToast()
+const { toast } = useToast()
 
   useEffect(() => {
     if (!Cookies.get("firstTimeVisit")) {
@@ -128,18 +131,27 @@ export default function Index({ children}: RootLayoutProps) {
     }
   }, [])
 
+
   return (
-    <BalanceProvider>
+
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`min-h-screen bg-background font-sans antialiased ${fontSans.variable}`}>
+
+<div className="relative flex min-h-screen flex-col">
+<SiteHeader/>
+        
+        <WagmiRainbowProvider>
+  <BalanceProvider>
       <FeesProvider>
         <ValidatorsProvider>
           <StakingProvider>
             <PricesProvider>
               <CCTXsProvider>
                 <NFTProvider>
-                  <div className="relative flex min-h-screen flex-col">
-                  
-                    <SiteHeader />
-                    <section className="container px-4 mt-4">
+
+
+              <section className="container px-4 mt-4">
                       {children}
                     </section>
                   </div>
@@ -151,5 +163,8 @@ export default function Index({ children}: RootLayoutProps) {
         </ValidatorsProvider>
       </FeesProvider>
     </BalanceProvider>
+   </WagmiRainbowProvider/>
+      </body>
+    </html>
   )
 }
