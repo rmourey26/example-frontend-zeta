@@ -125,7 +125,9 @@ export const metadata: Metadata = {
 }
 
 interface RootLayoutProps {
+  children: Readonly<{
   children: React.ReactNode
+}>) 
 }
 export default function RootLayout({ children}: RootLayoutProps) {
 
