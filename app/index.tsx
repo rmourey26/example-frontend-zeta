@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import { Metadata } from 'next'
 import { siteConfig } from '@/config/site'
 import React, { createContext, useContext, useEffect, useState } from "react"
 import { BalanceProvider } from '@/context/BalanceContext'
