@@ -1,4 +1,4 @@
-
+'use client'
 
 import { useEffect, useState } from "react"
 import { useBalanceContext } from "@/context/BalanceContext"
