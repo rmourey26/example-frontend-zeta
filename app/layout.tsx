@@ -141,7 +141,7 @@ const { toast } = useToast()
 
 <div className="relative flex min-h-screen flex-col">
 <SiteHeader/>
-        
+   <div className="flex-1">
         <WagmiRainbowProvider>
   <BalanceProvider>
       <FeesProvider>
@@ -165,6 +165,7 @@ const { toast } = useToast()
       </FeesProvider>
     </BalanceProvider>
    </WagmiRainbowProvider/>
+</div>
       </body>
     </html>
 </ReactQueryClientProvider >
