@@ -119,6 +119,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) { 
 
+{/*
 const { toast } = useToast()
 
   useEffect(() => {
@@ -132,6 +133,7 @@ const { toast } = useToast()
     }
   }, [])
 
+*\}
 
   return (
 <ReactQueryClientProvider client={queryClient}>
