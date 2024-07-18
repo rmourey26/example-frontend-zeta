@@ -1,4 +1,3 @@
-'use client' 
 
 import "@/styles/globals.css"
 import React, { ReactNode } from 'react'
