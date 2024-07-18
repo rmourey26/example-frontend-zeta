@@ -133,7 +133,7 @@ const { toast } = useToast()
     }
   }, [])
 
-*\}
+*/}
 
   return (
 <ReactQueryClientProvider client={queryClient}>
