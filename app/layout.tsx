@@ -134,7 +134,7 @@ const { toast } = useToast()
 
 
   return (
-<ReactQueryClientProvider>
+<ReactQueryClientProvider client={queryClient}>
     <html lang="en" suppressHydrationWarning>
       <body
         className={`min-h-screen bg-background font-sans antialiased ${fontSans.variable}`}>
