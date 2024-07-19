@@ -1,4 +1,3 @@
-'use client'
 
 import { useEffect, useState } from "react"
 import { useBalanceContext } from "@/context/BalanceContext"
@@ -36,7 +35,7 @@ const ConnectWallet = () => {
   )
 }
 
-export default function IndexPage() {
+export default async function IndexPage() {
   const { stakingDelegations } = useStakingContext()
   const { prices } = usePricesContext()
 
